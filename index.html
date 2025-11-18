@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohini Tiwari - Full Stack Developer & Creative Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* CSS Variables - Color Palette */
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --background: #0a0e27;
+            --surface: #141829;
+            --surface-light: #1e2749;
+            --text: #e4e6eb;
+            --text-muted: #a0a6b0;
+            --accent: #ff006e;
+            --accent-secondary: #00d4ff;
+            --border: rgba(255, 255, 255, 0.08);
+            --radius: 12px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+        }
+
+        /* Typography */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #0f1633 100%);
+            color: var(--text);
+            line-height: 1.6;
+            letter-spacing: -0.5px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 750;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-lg);
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            background-color: rgba(10, 14, 39, 0.8);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.05);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: var(--spacing-lg);
+            padding-right: var(--spacing-lg);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: var(--spacing-sm);
+                font-size: 0.85rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                display: none;
+            }
+
+            .header-content {
+                padding: 1rem var(--spacing-sm);
+            }
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl) 0;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-30px) translateX(30px); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.1;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            max-width: 500px;
+            color: var(--text-muted);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        button,
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2.5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: -1;
+            transition: left 0.3s ease;
+        }
+
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(20, 24, 41, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(0, 212, 255, 0.2);
+            border-radius: 24px;
+            padding: var(--spacing-xl);
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            animation: slideUp 0.8s ease-out 0.3s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-card:hover {
+            background: rgba(20, 24, 41, 0.8);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.4);
+        }
+
+        .glass-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+        }
+
+        .glass-card p {
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .glass-card-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: var(--spacing-xs);
+            font-weight: 500;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .glass-card {
+                display: none;
+            }
+
+            .hero::before {
+                display: none;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: var(--spacing-xl) 0;
+            border-top: 1px solid var(--border);
+            position: relative;
+        }
+
+        section:first-of-type {
+            border-top: none;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.9;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+            padding: var(--spacing-md);
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: var(--radius);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateX(5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-text h4 {
+            color: var(--text);
+            margin-bottom: var(--spacing-xs);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(255, 0, 110, 0.05));
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: var(--spacing-lg);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover::after {
+            width: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(255, 0, 110, 0.08));
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.25rem;
+        }
+
+        .skill-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+        }
+
+        .skill-card p {
+            font-size: 0.98rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .tag {
+            background: rgba(0, 212, 255, 0.12);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1.2px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info h3 {
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .form-group label {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(0, 212, 255, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 110, 0.05));
+            border: 1.5px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            border-color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
+            border-top: 1px solid var(--border);
+            padding: var(--spacing-xl) 0;
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-section h4 {
+            margin-bottom: var(--spacing-md);
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+        }
+
+        /* Utility Classes */
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section-title h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#home" class="logo">Rohini Tiwari</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Hi, I'm <br><span style="color: var(--accent);">Rohini Tiwari</span></h1>
+                        <p>Creative developer crafting stunning digital experiences. Specializing in full-stack development with cutting-edge technologies and design-first approach.</p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary">Contact Me</button>
+                            <button class="btn btn-secondary">View My Work</button>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>Rohini's Achievements</h3>
+                        <p>Building exceptional products with innovation and passion</p>
+                        <div class="glass-card-stats">
+                            <div class="stat">
+                                <span class="stat-value">8+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">60+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">45+</span>
+                                <span class="stat-label">Happy Clients</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">20+</span>
+                                <span class="stat-label">Technologies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>About Rohini</h2>
+                    <p>Get to know my journey and what drives my passion for creating amazing digital solutions</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Who I Am</h3>
+                        <p>I'm Rohini Tiwari, a passionate full-stack developer with a keen eye for design and a love for solving complex problems. With over 8 years of experience, I've worked with startups and established companies to build scalable, user-centric digital solutions that make an impact.</p>
+                        <p>My journey started with curiosity about how technology shapes our world, which led me to pursue web development. Today, I specialize in creating responsive, accessible, and performant web applications that users love.</p>
+
+                        <div class="about-features">
+                            <div class="feature">
+                                <div class="feature-icon"></div>
+                                <div class="feature-text">
+                                    <h4>Innovative Problem Solver</h4>
+                                    <p>Tackling challenging problems with creative, elegant solutions</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon"></div>
+                                <div class="feature-text">
+                                    <h4>Lifelong Learner</h4>
+                                    <p>Always staying ahead with latest technologies and best practices</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <div class="feature-icon"></div>
+                                <div class="feature-text">
+                                    <h4>Collaborative Leader</h4>
+                                    <p>Inspiring teams to achieve excellence together and deliver results</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img src="https://www.shutterstock.com/image-photo/profile-side-view-portrait-attractive-260nw-2503436439.jpg" alt="Rohini Tiwari - Full Stack Developer" style="width: 100%; border-radius: 16px; opacity: 0.95; box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Rohini's Skills & Expertise</h2>
+                    <p>Technologies and tools I use to create exceptional digital experiences</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3><span class="skill-icon"></span> Frontend Mastery</h3>
+                        <p>Building responsive, interactive user interfaces with modern frameworks and pixel-perfect design</p>
+                        <div class="skill-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3><span class="skill-icon"></span> Backend Development</h3>
+                        <p>Creating robust server applications with secure APIs, efficient databases, and scalable architecture</p>
+                        <div class="skill-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">REST APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3><span class="skill-icon"></span> Design & UX</h3>
+                        <p>Designing beautiful user experiences that are accessible, inclusive, and delightful to use</p>
+                        <div class="skill-tags">
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">CSS Animation</span>
+                            <span class="tag">Prototyping</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3><span class="skill-icon"></span> DevOps & Cloud</h3>
+                        <p>Deploying and maintaining applications using modern cloud services and CI/CD pipelines</p>
+                        <div class="skill-tags">
+                            <span class="tag">Docker</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">AWS</span>
+                            <span class="tag">CI/CD</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3><span class="skill-icon"></span> Mobile Solutions</h3>
+                        <p>Creating responsive applications that work seamlessly across all devices and platforms</p>
+                        <div class="skill-tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">PWA</span>
+                            <span class="tag">Mobile UX</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3><span class="skill-icon"></span> Performance & SEO</h3>
+                        <p>Optimizing applications for speed, search visibility, and exceptional performance metrics</p>
+                        <div class="skill-tags">
+                            <span class="tag">Web Vitals</span>
+                            <span class="tag">SEO</span>
+                            <span class="tag">Optimization</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Let's Connect</h2>
+                    <p>Got an exciting project? Rohini is ready to bring your ideas to life</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Contact Rohini Tiwari</h3>
+                        <p>I'm always interested in hearing about new projects and opportunities. Whether you have a specific project in mind or just want to discuss the future of web development, I'd love to hear from you.</p>
+
+                        <div style="margin-top: var(--spacing-lg); margin-bottom: var(--spacing-lg);">
+                            <p><strong style="color: var(--primary);">Email:</strong><br>hello@rohinitiwari.com</p>
+                            <p style="margin-top: var(--spacing-md);"><strong style="color: var(--primary);">Location:</strong><br>San Francisco, CA</p>
+                            <p style="margin-top: var(--spacing-md);"><strong style="color: var(--primary);">Response Time:</strong><br>Usually within 24 hours</p>
+                        </div>
+
+                        <h4 style="margin-bottom: var(--spacing-md); color: var(--text);">Follow Rohini</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="GitHub">GH</a>
+                            <a href="#" class="social-link" title="LinkedIn">In</a>
+                            <a href="#" class="social-link" title="Twitter">𝕏</a>
+                            <a href="#" class="social-link" title="Email">@</a>
+                        </div>
+                    </div>
+
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What is this about?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your project, ideas, or anything else..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message to Rohini</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Rohini Tiwari</h4>
+                    <p>Full-stack developer passionate about creating beautiful, functional, and impactful digital experiences that solve real-world problems.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About</a>
+                        <a href="#skills">Skills</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Connect with Rohini</h4>
+                    <div class="footer-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Email</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rohini Tiwari. All rights reserved.</p>
+                <div style="display: flex; gap: var(--spacing-md);">
+                    <a href="#" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: var(--text-muted); text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
